@@ -4,7 +4,8 @@
 
 void add(stack_t **stack, unsigned int line_number)
 {
-    stack_t *top, *second;
+    stack_t *top1, *top2;
+    int sum;
 
     if (*stack == NULL || (*stack)->next == NULL)
     {
@@ -12,25 +13,12 @@ void add(stack_t **stack, unsigned int line_number)
         exit(EXIT_FAILURE);
     }
 
-    top = *stack;
-    second = (*stack)->next;
+    top1 = *stack;
+    top2 = top1->next;
 
-    // Debugging statement
-    printf("Adding top two elements: %d + %d\n", top->n, second->n);
+    sum = top1->n + top2->n;
 
-    // Perform the addition
-    second->n += top->n;
-
-    // Remove the top element
-    second->next = top->next;
-    if (top->next != NULL)
-        top->next->prev = second;
-
-    free(top);
-
-    // Update the stack pointer
-    *stack = second;
-
-    // Debugging statement
-    printf("New top of stack after addition: %d\n", (*stack)->n);
+    top2->n = sum;
+    *stack = top2;
+    free(top1);
 }
