@@ -1,6 +1,7 @@
 #include "monty.h"
-#include <string.h>  // For strtok
 #include <ctype.h>   // For isdigit
+#include <stdlib.h>  // For atoi
+#include <string.h>  // For strtok
 
 void push(stack_t **stack, unsigned int line_number, char *arg)
 {
