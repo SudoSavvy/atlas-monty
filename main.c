@@ -66,5 +66,5 @@ execute_instruction(opcode, &stack, line_number);
 free(line);
 fclose(file);
 free_stack(stack);
-return 0;
+return (0);
 }
