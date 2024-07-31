@@ -48,6 +48,10 @@ void execute_opcodes(FILE *file, stack_t **stack)
         {
             nop(stack, line_number);
         }
+        else if (strcmp(opcode, "pint") == 0)
+        {
+            pint(stack, line_number);
+        }
         else
         {
             fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
