@@ -1,25 +1,25 @@
 #include "monty.h"
 
-void execute_instruction(char *opcode, stack_t **stack, unsigned int line_number)
+int main(int argc, char **argv)
 {
-    instruction_t instructions[] = {
-        {"push", push},
-        {"pall", pall},
-        {"pint", pint},  // Add pint to the instruction set
-        {NULL, NULL}
-    };
+    stack_t *stack = NULL;
+    unsigned int line_number = 1; /* Example line number */
 
-    int i = 0;
-    while (instructions[i].opcode != NULL)
+    if (argc != 2)
     {
-        if (strcmp(opcode, instructions[i].opcode) == 0)
-        {
-            instructions[i].f(stack, line_number);
-            return;
-        }
-        i++;
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
     }
 
-    fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-    exit(EXIT_FAILURE);
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Initialize and run your Monty interpreter here */
+
+    fclose(file);
+    return (EXIT_SUCCESS);
 }
