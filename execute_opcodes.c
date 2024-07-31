@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <string.h>  // For strtok and strcmp
 
 void execute_opcodes(FILE *file, stack_t **stack)
 {
