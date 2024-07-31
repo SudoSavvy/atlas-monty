@@ -1,33 +1,13 @@
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-/* Function prototypes */
-void execute_opcodes(FILE *file, stack_t **stack);
-
-int main(int argc, char **argv)
-{
-    stack_t *stack = NULL;
-
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        return (EXIT_FAILURE);
-    }
-
-    FILE *file = fopen(argv[1], "r");
-    if (file == NULL)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        return (EXIT_FAILURE);
-    }
-
-    execute_opcodes(file, &stack);
-
-    fclose(file);
-    return (EXIT_SUCCESS);
-}
-
+/**
+ * execute_opcodes - Executes the opcodes from the Monty bytecode file.
+ * @file: Pointer to the file containing Monty bytecode.
+ * @stack: Pointer to the stack.
+ */
 void execute_opcodes(FILE *file, stack_t **stack)
 {
     char *line = NULL;
@@ -37,10 +17,8 @@ void execute_opcodes(FILE *file, stack_t **stack)
 
     while ((read = getline(&line, &len, file)) != -1)
     {
-        /* Parse and execute each line */
-        /* For simplicity, assuming only 'push' and 'pint' instructions */
         char *opcode = strtok(line, " \t\n");
-        if (opcode == NULL || *opcode == '#')  /* Skip empty lines or comments */
+        if (opcode == NULL || *opcode == '#') /* Skip empty lines or comments */
         {
             line_number++;
             continue;
