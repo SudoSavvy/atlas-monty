@@ -2,9 +2,6 @@
 
 int main(int argc, char **argv)
 {
-    stack_t *stack = NULL;
-    unsigned int line_number = 1; /* Example line number */
-
     if (argc != 2)
     {
         fprintf(stderr, "USAGE: monty file\n");
@@ -18,7 +15,7 @@ int main(int argc, char **argv)
         return (EXIT_FAILURE);
     }
 
-    /* Use stack and line_number in your Monty interpreter here */
+    /* Initialize and run your Monty interpreter here */
 
     fclose(file);
     return (EXIT_SUCCESS);
