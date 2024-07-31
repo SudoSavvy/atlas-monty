@@ -2,10 +2,8 @@
 #include <string.h>  // For strtok
 #include <ctype.h>   // For isdigit
 
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number, char *arg)
 {
-    char *arg = strtok(NULL, " \t");
-    stack_t *new_node;
     int value;
 
     if (arg == NULL || !isdigit(*arg))
@@ -16,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number)
 
     value = atoi(arg);
 
-    new_node = malloc(sizeof(stack_t));
+    stack_t *new_node = malloc(sizeof(stack_t));
     if (new_node == NULL)
     {
         fprintf(stderr, "Error: malloc failed\n");
