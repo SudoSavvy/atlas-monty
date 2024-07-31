@@ -22,5 +22,6 @@ void pint(stack_t **stack, unsigned int line_number);
 void execute_opcodes(FILE *file, stack_t **stack);
 void free_stack(stack_t *stack);
 void pall(stack_t **stack);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
