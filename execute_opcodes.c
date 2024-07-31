@@ -34,6 +34,8 @@ void execute_opcodes(FILE *file, stack_t **stack)
                 push(stack, line_number, arg);
             else if (strcmp(opcode, "pint") == 0)
                 pint(stack, line_number);
+            else if (strcmp(opcode, "pall") == 0)
+                pall(stack);
             else
             {
                 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
