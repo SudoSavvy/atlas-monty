@@ -15,6 +15,9 @@ void add(stack_t **stack, unsigned int line_number)
     top = *stack;
     second = (*stack)->next;
 
+    // Debugging statement
+    printf("Adding top two elements: %d + %d\n", top->n, second->n);
+
     // Perform the addition
     second->n += top->n;
 
@@ -27,4 +30,7 @@ void add(stack_t **stack, unsigned int line_number)
 
     // Update the stack pointer
     *stack = second;
+
+    // Debugging statement
+    printf("New top of stack after addition: %d\n", (*stack)->n);
 }
