@@ -7,7 +7,8 @@ void execute_opcodes(FILE *file, stack_t **stack)
     size_t len = 0;
     ssize_t read;
     unsigned int line_number = 1;
-    char *opcode, *arg;
+    char *opcode;
+    char *arg;
 
     while ((read = getline(&line, &len, file)) != -1)
     {
@@ -30,7 +31,7 @@ void execute_opcodes(FILE *file, stack_t **stack)
         if (opcode)
         {
             if (strcmp(opcode, "push") == 0)
-                push(stack, line_number);
+                push(stack, line_number, arg);
             else if (strcmp(opcode, "pint") == 0)
                 pint(stack, line_number);
             else
