@@ -23,6 +23,17 @@ void execute_instruction(char *opcode, stack_t **stack, unsigned int line_number
     exit(EXIT_FAILURE);
 }
 
+void free_stack(stack_t *stack)
+{
+    stack_t *temp;
+    while (stack != NULL)
+    {
+        temp = stack;
+        stack = stack->next;
+        free(temp);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     FILE *file;
@@ -54,5 +65,6 @@ int main(int argc, char *argv[])
 
     free(line);
     fclose(file);
+    free_stack(stack);
     return 0;
 }
