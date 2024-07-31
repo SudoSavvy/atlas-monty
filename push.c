@@ -1,5 +1,6 @@
 #include "monty.h"
-#include <ctype.h> // Include this header for isdigit
+#include <ctype.h>
+int is_number(const char *str);
 
 /**
  * push - Pushes an element to the stack.
